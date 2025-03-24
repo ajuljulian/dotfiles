@@ -9,12 +9,6 @@ if [ -f "$HOME/.zprofile.secrets" ]; then
   source "$HOME/.zprofile.secrets"
 fi
 
-# uncommenting this is repeating issued commands in the output.
-# not sure why I was setting TERM here instead of letting it 
-# take the default value.  Most likely because something was
-# not working either in tmux or neovim.
-# export TERM=screen-256color
-
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/bin
@@ -29,7 +23,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:'/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
 
 # source a file containing environment specific entries if it exists.
-[ -f ~/.zenv_specific ]  && source ~/.zenv_specifickj
+[ -f ~/.zenv_specific ]  && source ~/.zenv_specific
 
 
 
