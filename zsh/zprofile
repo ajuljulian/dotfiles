@@ -1,0 +1,54 @@
+# Should be able to go into vi mode in bash:
+set -o vi
+
+export EDITOR=nvim
+
+
+# Load personal secrets
+if [ -f "$HOME/.zprofile.secrets" ]; then
+  source "$HOME/.zprofile.secrets"
+fi
+
+# uncommenting this is repeating issued commands in the output.
+# not sure why I was setting TERM here instead of letting it 
+# take the default value.  Most likely because something was
+# not working either in tmux or neovim.
+# export TERM=screen-256color
+
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/texlive/2024basic/bin/universal-darwin
+
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin
+
+export PATH=$PATH:'/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
+
+# source a file containing environment specific entries if it exists.
+[ -f ~/.zenv_specific ]  && source ~/.zenv_specifickj
+
+
+
+###################################
+####### Useful functions ##########
+###################################
+function bb { open -a /Applications/BBEdit.app $*; }
+function aws-personal { aws --profile ara-personal $*; }
+
+# Useful aliases
+alias dd='cd ~/Development'
+alias ddp='dd; cd personal'
+alias ddc='dd; cd configs'
+alias my_ec2_instance='ssh -i ~/.ssh/ara-aws-key-oregon.pem ec2-user@54.214.77.218'
+alias pi-hole='ssh -i ~/.ssh/id_rsa_personal arajuljulian@192.168.7.251'
+alias zzz='source ~/.zshrc && source ~/.zprofile'
+alias tmux='tmux -u'
+alias k='kubectl'
+
+export AWS_DEFAULT_PROFILE=ara-personal
+# source a file containing environment specific entries if it exists
+eval "$(/opt/homebrew/bin/brew shellenv)"
