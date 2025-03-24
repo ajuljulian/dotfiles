@@ -52,7 +52,7 @@ map("v", "<leader>ca", ":<C-U>Lspsaga range_code_action<CR>", opts)
 -- Toggle cursor column
 map("n", "<Leader>c", ":set cursorcolumn!<CR>", opts)
 
--- Neotree
+-- Neotree plugin
 map("n", "<C-Z>", ":Neotree toggle<CR>", opts)
 vim.keymap.set("n", "<leader>gg", "<cmd>Neotree toggle git_status<cr>", { desc = "Toggle Git Status (Neo-tree)" })
 
@@ -79,12 +79,20 @@ vim.api.nvim_set_keymap("n", "<leader>fh", ':lua require("telescope.builtin").he
 
 -- Git shortcuts
 --
+
+vim.keymap.set("n", "<leader>gs", ":Neogit<CR>", { desc = "Open Neogit" })
+vim.keymap.set("n", "<leader>gx", function()
+	-- assumes you're in a file selected from Neo-tree
+	require("gitsigns").diffthis()
+end, { desc = "Diff current file" })
 -- Show blame info for the current line
 vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "Git Blame (Fugitive)" })
 
 -- Show full diff of current file
-vim.keymap.set("n", "<leader>gd", ":Gdiffsplit<CR>", { desc = "Git Diff Split (Fugitive)" })
-
+--vim.keymap.set("n", "<leader>gd", ":Gdiffsplit<CR>", { desc = "Git Diff Split (Fugitive)" })
+vim.keymap.set("n", "<leader>gd", function()
+	require("gitsigns").diffthis()
+end, { desc = "Gitsigns Diff current file" })
 -- Show log and diff for current line
 vim.keymap.set("n", "<leader>gl", function()
 	local line = vim.fn.line(".")

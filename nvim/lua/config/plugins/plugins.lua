@@ -31,7 +31,14 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("gitsigns").setup()
+			require("gitsigns").setup({
+				on_attach = function(bufnr)
+					local gs = package.loaded.gitsigns
+					local map = vim.keymap.set
+					map("n", "<leader>hp", gs.preview_hunk, { buffer = bufnr, desc = "Preview Git hunk" })
+					-- you can also map other gitsigns features here if you want
+				end,
+			})
 		end,
 	},
 	{
