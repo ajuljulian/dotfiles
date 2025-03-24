@@ -54,6 +54,7 @@ map("n", "<Leader>c", ":set cursorcolumn!<CR>", opts)
 
 -- Neotree
 map("n", "<C-Z>", ":Neotree toggle<CR>", opts)
+vim.keymap.set("n", "<leader>gg", "<cmd>Neotree toggle git_status<cr>", { desc = "Toggle Git Status (Neo-tree)" })
 
 -- Floaterm toggle
 map("n", "<leader>ft", ":FloatermNew<CR>", opts)
