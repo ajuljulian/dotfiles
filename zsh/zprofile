@@ -14,6 +14,7 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/texlive/2024basic/bin/universal-darwin
 
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
@@ -41,7 +42,6 @@ alias my_ec2_instance='ssh -i ~/.ssh/ara-aws-key-oregon.pem ec2-user@54.214.77.2
 alias pi-hole='ssh -i ~/.ssh/id_rsa_personal arajuljulian@192.168.7.251'
 alias zzz='source ~/.zshrc && source ~/.zprofile'
 alias tmux='tmux -u'
-alias k='kubectl'
 
 export AWS_DEFAULT_PROFILE=ara-personal
 # source a file containing environment specific entries if it exists
