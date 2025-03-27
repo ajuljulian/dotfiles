@@ -1,81 +1,80 @@
 --print("hello from keymappings.lua")
-local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Turn off search highlight
-map("n", "<Esc><Esc>", ":silent! nohls<CR>", opts)
+vim.keymap.set("n", "<Esc><Esc>", ":silent! nohls<CR>", opts)
 
 -- List and switch buffers
-map("", "<leader>b", ":ls<CR>:b<Space>", { noremap = true })
+vim.keymap.set("", "<leader>b", ":ls<CR>:b<Space>", { noremap = true })
 
 -- Edit vim config
-map("n", "<leader>ev", ":vsplit $MYVIMRC<CR>", opts)
+vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC<CR>", opts)
 
 -- Uppercase current word
-map("n", "<leader>u", "viwUe", { noremap = true })
+vim.keymap.set("n", "<leader>u", "viwUe", { noremap = true })
 
 -- Window navigation
-map("n", "<C-J>", "<C-W><C-J>", { noremap = true })
-map("n", "<C-K>", "<C-W><C-K>", { noremap = true })
-map("n", "<C-L>", "<C-W><C-L>", { noremap = true })
-map("n", "<C-H>", "<C-W><C-H>", { noremap = true })
+vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { noremap = true })
+vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { noremap = true })
+vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { noremap = true })
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>", { noremap = true })
 
 -- Tab management
-map("n", "<C-N>", ":tabnew<CR>", opts)
-map("n", "<C-Up>", ":tabprevious<CR>", opts)
-map("n", "<C-Down>", ":tabnext<CR>", opts)
+vim.keymap.set("n", "<C-N>", ":tabnew<CR>", opts)
+vim.keymap.set("n", "<C-Up>", ":tabprevious<CR>", opts)
+vim.keymap.set("n", "<C-Down>", ":tabnext<CR>", opts)
 
 -- Popup menu navigation
 vim.keymap.set("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
 vim.keymap.set("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 
 -- Close buffer
-map("n", "<leader>q", ":q<CR>", opts)
+vim.keymap.set("n", "<leader>q", ":q<CR>", opts)
 
 -- Source vimrc
-map("n", "<leader><leader>s", ":source $MYVIMRC<CR>", opts)
+vim.keymap.set("n", "<leader><leader>s", ":source $MYVIMRC<CR>", opts)
 
 -- Buffer navigation
-map("", "<S-L>", ":bnext<CR>", { noremap = true })
-map("", "<S-H>", ":bprev<CR>", { noremap = true })
+vim.keymap.set("", "<S-L>", ":bnext<CR>", { noremap = true })
+vim.keymap.set("", "<S-H>", ":bprev<CR>", { noremap = true })
 
 -- LSP Finder (Lspsaga)
-map("n", "gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
-map("n", "gh", ":Lspsaga lsp_finder<CR>", opts) -- Optional alternative
+vim.keymap.set("n", "gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
+vim.keymap.set("n", "gh", ":Lspsaga lsp_finder<CR>", opts) -- Optional alternative
 
 -- Code Action
-map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-map("v", "<leader>ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
-map("n", "<leader>ca", ":Lspsaga code_action<CR>", opts)
-map("v", "<leader>ca", ":<C-U>Lspsaga range_code_action<CR>", opts)
+vim.keymap.set("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+vim.keymap.set("v", "<leader>ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+vim.keymap.set("n", "<leader>ca", ":Lspsaga code_action<CR>", opts)
+vim.keymap.set("v", "<leader>ca", ":<C-U>Lspsaga range_code_action<CR>", opts)
 
 -- Toggle cursor column
-map("n", "<Leader>c", ":set cursorcolumn!<CR>", opts)
+vim.keymap.set("n", "<Leader>c", ":set cursorcolumn!<CR>", opts)
 
 -- Neotree plugin
-map("n", "<C-Z>", ":Neotree toggle<CR>", opts)
+vim.keymap.set("n", "<C-Z>", ":Neotree toggle<CR>", opts)
 vim.keymap.set("n", "<leader>gg", "<cmd>Neotree toggle git_status<cr>", { desc = "Toggle Git Status (Neo-tree)" })
 
 -- Floaterm toggle
-map("n", "<leader>ft", ":FloatermNew<CR>", opts)
-map("t", "<leader>ft", "<C-\\><C-n>:FloatermNew<CR>", opts)
+vim.keymap.set("n", "<leader>ft", ":FloatermNew<CR>", opts)
+vim.keymap.set("t", "<leader>ft", "<C-\\><C-n>:FloatermNew<CR>", opts)
 -- Go to tab by tab number
-vim.api.nvim_set_keymap("n", "<leader>1", "1gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>2", "2gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>3", "3gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>4", "4gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>5", "5gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>6", "6gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>7", "7gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>8", "8gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>9", "9gt", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>0", ":tablast<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>1", "1gt", { noremap = true })
+vim.keymap.set("n", "<leader>2", "2gt", { noremap = true })
+vim.keymap.set("n", "<leader>3", "3gt", { noremap = true })
+vim.keymap.set("n", "<leader>4", "4gt", { noremap = true })
+vim.keymap.set("n", "<leader>5", "5gt", { noremap = true })
+vim.keymap.set("n", "<leader>6", "6gt", { noremap = true })
+vim.keymap.set("n", "<leader>7", "7gt", { noremap = true })
+vim.keymap.set("n", "<leader>8", "8gt", { noremap = true })
+vim.keymap.set("n", "<leader>9", "9gt", { noremap = true })
+vim.keymap.set("n", "<leader>0", ":tablast<cr>", { noremap = true })
 
 -- Find files using Telescope command-line.
-vim.api.nvim_set_keymap("n", "<leader>ff", ':lua require("telescope.builtin").find_files()<cr>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fg", ':lua require("telescope.builtin").live_grep()<cr>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fb", ':lua require("telescope.builtin").buffers()<cr>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fh", ':lua require("telescope.builtin").help_tags()<cr>', { noremap = true })
+vim.keymap.set("n", "<leader>ff", ':lua require("telescope.builtin").find_files()<cr>', { noremap = true })
+vim.keymap.set("n", "<leader>fg", ':lua require("telescope.builtin").live_grep()<cr>', { noremap = true })
+vim.keymap.set("n", "<leader>fb", ':lua require("telescope.builtin").buffers()<cr>', { noremap = true })
+vim.keymap.set("n", "<leader>fh", ':lua require("telescope.builtin").help_tags()<cr>', { noremap = true })
 
 -- Git shortcuts
 --
