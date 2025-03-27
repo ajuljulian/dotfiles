@@ -102,3 +102,13 @@ end, { desc = "Git Line History (Fugitive)" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+
+vim.keymap.set("n", "<leader>zc", ":CopilotChat<CR>", { desc = "Chat with Copilot" })
+vim.keymap.set("v", "<leader>ze", ":CopilotChatExplain<CR>", { desc = "Explain Code" })
+vim.keymap.set("v", "<leader>zr", ":CopilotChatReview<CR>", { desc = "Review Code" })
+vim.keymap.set("v", "<leader>zf", ":CopilotChatFix<CR>", { desc = "Fix Code" })
+vim.keymap.set("v", "<leader>zo", ":CopilotChatOptimize<CR>", { desc = "Optimize Code" })
+vim.keymap.set("v", "<leader>zd", ":CopilotChatDocs<CR>", { desc = "Generate Docs" })
+vim.keymap.set("v", "<leader>zt", ":CopilotChatTests<CR>", { desc = "Generate Tests" })
+vim.keymap.set("n", "<leader>zc", ":CopilotChatCommit<CR>", { desc = "Generate Commit Message" })
+vim.keymap.set("v", "<leader>zc", ":CopilotChatCommit<CR>", { desc = "Generate Commit Message for Selection" })
