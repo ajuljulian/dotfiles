@@ -1,6 +1,6 @@
 # What is this?
 
-I use these dotfiles on all my machines. I try to aggregate as much of my Dotfiles in one location and create symlinks to them from their expected locations. These are specific to my setup on my mac (for example, my usage of `homebrew`), but should mostly apply to other OSes as well.
+I use these dot files on all my machines. I try to aggregate as much of my them in one location and create symlinks to them from their expected locations. These are specific to my setup on my mac (for example, my usage of `homebrew`), but should mostly apply to other OSes as well.
 
 ## Neovim
 
@@ -14,7 +14,6 @@ And let's say the neovim config file is under `~/.config/nvim`
 1. `$ pip install neovim`
 1. `$ npm install -g neovim`
 1. Launch neovim: `nvim`
-1. Install all the plugins: `:PlugInstall`
 1. Run `:checkhealth` to see if there are any issues.
 1. Upgrade the nightly build with `$ brew reinstall neovim`
 1. Install go binaries needed by vim-go: `:GoInstallBinaries`
@@ -71,6 +70,19 @@ Create a symlink:
 
 ```
 $ ln -s ~/Development/configs/kitty.conf ~/.conf/kitty/kitty.conf
+```
+
+## Ghostty (terminal emulator)
+
+https://ghostty.org/
+
+```
+$ brew install --cask ghostty
+```
+
+Create a symlink:
+```
+$ ln -s ~/Development/configs/ghostty.conf ~/Library/Application Support/com.mitchellh.ghostty
 ```
 
 ## Lazygit
