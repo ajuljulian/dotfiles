@@ -72,6 +72,14 @@ vim.opt.completeopt = { "menuone", "noselect" }
 
 vim.o.termguicolors = true
 
+-- A small autocommand to prevent a new line created under a comment line from being a comment line by default.
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
+
 -- Plugins
 require("config.lazy")
 
