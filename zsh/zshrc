@@ -20,6 +20,3 @@ source $ZSH/oh-my-zsh.sh
 
 # setup vi editing mode
 bindkey -v
-
-
-
