@@ -1,6 +1,6 @@
-# Should be able to go into vi mode in bash:
-set -o vi
+#### For login shells ###
 
+# Set the default editor to Neovim
 export EDITOR=nvim
 
 
@@ -25,7 +25,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 #export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 #export JAVA_HOME="/opt/homebrew/opt/openjdk"
@@ -40,26 +39,6 @@ export PATH=$PATH:'/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # source a file containing environment specific entries if it exists.
 [ -f ~/.zenv_specific ]  && source ~/.zenv_specific
-
-
-
-###################################
-####### Useful functions ##########
-###################################
-function bb { open -a /Applications/BBEdit.app $*; }
-function aws-personal { aws --profile ara-personal $*; }
-function ai() {
-  openai api completions.create -m gpt-4o-mini -p "$*"
-}
-# Useful aliases
-alias dd='cd ~/Development'
-alias ddp='dd; cd personal'
-alias ddc='dd; cd configs'
-alias my_ec2_instance='ssh -i ~/.ssh/ara-aws-key-oregon.pem ec2-user@54.214.77.218'
-alias pi-hole='ssh -i ~/.ssh/id_rsa_personal arajuljulian@192.168.7.251'
-alias zzz='source ~/.zshrc && source ~/.zprofile'
-alias tmux='tmux -u'
-alias k='kubectl'
 
 export AWS_DEFAULT_PROFILE=ara-personal
 # source a file containing environment specific entries if it exists

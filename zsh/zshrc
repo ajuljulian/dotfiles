@@ -1,3 +1,8 @@
+#### Interactive shell settings ####
+
+# Use vi keybindings in the shell
+set -o vi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -35,3 +40,24 @@ fpath=(/Users/arajuljulian/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+eval "$(jenv init -)"
+
+
+###################################
+####### Useful functions ##########
+###################################
+function bb { open -a /Applications/BBEdit.app $*; }
+function aws-personal { aws --profile ara-personal $*; }
+function ai() {
+  openai api completions.create -m gpt-4o-mini -p "$*"
+}
+# Useful aliases
+alias dd='cd ~/Development'
+alias ddp='dd; cd personal'
+alias ddc='dd; cd configs'
+alias my_ec2_instance='ssh -i ~/.ssh/ara-aws-key-oregon.pem ec2-user@54.214.77.218'
+alias pi-hole='ssh -i ~/.ssh/id_rsa_personal arajuljulian@192.168.7.251'
+alias zzz='source ~/.zshrc && source ~/.zprofile'
+alias tmux='tmux -u'
+alias k='kubectl'
