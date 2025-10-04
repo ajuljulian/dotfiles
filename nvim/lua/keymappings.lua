@@ -24,9 +24,24 @@ vim.keymap.set("n", "<C-N>", ":tabnew<CR>", opts)
 vim.keymap.set("n", "<C-Up>", ":tabprevious<CR>", opts)
 vim.keymap.set("n", "<C-Down>", ":tabnext<CR>", opts)
 
--- Popup menu navigation
-vim.keymap.set("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
-vim.keymap.set("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
+-- Popup menu navigation with Copilot priority
+vim.keymap.set("i", "<Tab>", function()
+  if require("copilot.suggestion").is_visible() then
+    return require("copilot.suggestion").accept()
+  elseif vim.fn.pumvisible() == 1 then
+    return "<C-n>"
+  else
+    return "<Tab>"
+  end
+end, { expr = true })
+
+vim.keymap.set("i", "<S-Tab>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-p>"
+  else
+    return "<S-Tab>"
+  end
+end, { expr = true })
 
 -- Close buffer
 vim.keymap.set("n", "<leader>q", ":q<CR>", opts)
