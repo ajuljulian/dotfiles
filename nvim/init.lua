@@ -86,3 +86,8 @@ require("config.lazy")
 -- Shortcuts
 --vim.cmd("source ~/.config/nvim/keymappings.vim")
 require("keymappings")
+
+require("auto_reload").setup({
+	project_watch = true, -- enable whole-project watching (great for Claude/atomic writes)
+	notify = true,
+})
