@@ -56,6 +56,7 @@ function ai() {
 alias dd='cd ~/Development'
 alias ddp='dd; cd personal'
 alias ddc='dd; cd configs'
+alias guru='ddp; cd tregglio/guru'
 alias my_ec2_instance='ssh -i ~/.ssh/ara-aws-key-oregon.pem ec2-user@54.214.77.218'
 alias pi-hole='ssh -i ~/.ssh/id_rsa_personal arajuljulian@192.168.7.251'
 alias zzz='source ~/.zshrc && source ~/.zprofile'

@@ -26,21 +26,21 @@ vim.keymap.set("n", "<C-Down>", ":tabnext<CR>", opts)
 
 -- Popup menu navigation with Copilot priority
 vim.keymap.set("i", "<Tab>", function()
-  if require("copilot.suggestion").is_visible() then
-    return require("copilot.suggestion").accept()
-  elseif vim.fn.pumvisible() == 1 then
-    return "<C-n>"
-  else
-    return "<Tab>"
-  end
+	if require("copilot.suggestion").is_visible() then
+		return require("copilot.suggestion").accept()
+	elseif vim.fn.pumvisible() == 1 then
+		return "<C-n>"
+	else
+		return "<Tab>"
+	end
 end, { expr = true })
 
 vim.keymap.set("i", "<S-Tab>", function()
-  if vim.fn.pumvisible() == 1 then
-    return "<C-p>"
-  else
-    return "<S-Tab>"
-  end
+	if vim.fn.pumvisible() == 1 then
+		return "<C-p>"
+	else
+		return "<S-Tab>"
+	end
 end, { expr = true })
 
 -- Close buffer
@@ -130,3 +130,15 @@ vim.keymap.set("v", "<leader>zm", ":CopilotChatCommit<CR>", { desc = "Generate C
 
 vim.keymap.set("n", "<leader>csl", ":colorscheme tokyonight-day<CR>", { desc = "Change Color Scheme to Light" })
 vim.keymap.set("n", "<leader>csd", ":colorscheme tokyonight-moon<CR>", { desc = "Change Color Scheme to Dark" })
+
+local function back_prev_window()
+	local mode = vim.api.nvim_get_mode().mode
+	if mode:sub(1, 1) == "t" then
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
+	elseif mode:sub(1, 1) == "i" then
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+	end
+	vim.cmd("wincmd p")
+end
+
+vim.keymap.set({ "n", "i", "t" }, "<A-h>", back_prev_window, { desc = "Back to previous window" })
