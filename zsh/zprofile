@@ -12,7 +12,6 @@ fi
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/texlive/2024basic/bin/universal-darwin
 
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -41,7 +40,7 @@ export PATH=$PATH:'/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$HOME/.local/bin:$PATH"
 
 # source a file containing environment specific entries if it exists.
-[ -f ~/.zenv_specific ]  && source ~/.zenv_specific
+[ -f ~/.zprofile.local ]  && source ~/.zprofile.local
 
 export AWS_DEFAULT_PROFILE=ara-personal
 # source a file containing environment specific entries if it exists
