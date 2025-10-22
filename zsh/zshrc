@@ -62,6 +62,7 @@ alias pi-hole='ssh -i ~/.ssh/id_rsa_personal arajuljulian@192.168.7.251'
 alias zzz='source ~/.zshrc && source ~/.zprofile'
 alias tmux='tmux -u'
 alias k='kubectl'
+alias lg='lazygit'
 
 # Load local, machine-specific extras (ignored by git)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

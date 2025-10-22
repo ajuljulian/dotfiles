@@ -19,30 +19,6 @@ vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { noremap = true })
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { noremap = true })
 vim.keymap.set("n", "<C-H>", "<C-W><C-H>", { noremap = true })
 
--- Tab management
-vim.keymap.set("n", "<C-N>", ":tabnew<CR>", opts)
-vim.keymap.set("n", "<C-Up>", ":tabprevious<CR>", opts)
-vim.keymap.set("n", "<C-Down>", ":tabnext<CR>", opts)
-
--- Popup menu navigation with Copilot priority
-vim.keymap.set("i", "<Tab>", function()
-	if require("copilot.suggestion").is_visible() then
-		return require("copilot.suggestion").accept()
-	elseif vim.fn.pumvisible() == 1 then
-		return "<C-n>"
-	else
-		return "<Tab>"
-	end
-end, { expr = true })
-
-vim.keymap.set("i", "<S-Tab>", function()
-	if vim.fn.pumvisible() == 1 then
-		return "<C-p>"
-	else
-		return "<S-Tab>"
-	end
-end, { expr = true })
-
 -- Close buffer
 vim.keymap.set("n", "<leader>q", ":q<CR>", opts)
 
@@ -117,16 +93,6 @@ end, { desc = "Git Line History (Fugitive)" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
-
-vim.keymap.set("n", "<leader>zc", ":CopilotChat<CR>", { desc = "Chat with Copilot" })
-vim.keymap.set("v", "<leader>ze", ":CopilotChatExplain<CR>", { desc = "Explain Code" })
-vim.keymap.set("v", "<leader>zr", ":CopilotChatReview<CR>", { desc = "Review Code" })
-vim.keymap.set("v", "<leader>zf", ":CopilotChatFix<CR>", { desc = "Fix Code" })
-vim.keymap.set("v", "<leader>zo", ":CopilotChatOptimize<CR>", { desc = "Optimize Code" })
-vim.keymap.set("v", "<leader>zd", ":CopilotChatDocs<CR>", { desc = "Generate Docs" })
-vim.keymap.set("v", "<leader>zt", ":CopilotChatTests<CR>", { desc = "Generate Tests" })
-vim.keymap.set("n", "<leader>zm", ":CopilotChatCommit<CR>", { desc = "Generate Commit Message" })
-vim.keymap.set("v", "<leader>zm", ":CopilotChatCommit<CR>", { desc = "Generate Commit Message for Selection" })
 
 vim.keymap.set("n", "<leader>csl", ":colorscheme tokyonight-day<CR>", { desc = "Change Color Scheme to Light" })
 vim.keymap.set("n", "<leader>csd", ":colorscheme tokyonight-moon<CR>", { desc = "Change Color Scheme to Dark" })
