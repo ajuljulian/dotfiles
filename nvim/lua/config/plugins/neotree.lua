@@ -15,5 +15,6 @@ return {
 			-- fill any relevant options here
 			close_if_last_window = true,
 		},
+    enabled = true,
 	},
 }
