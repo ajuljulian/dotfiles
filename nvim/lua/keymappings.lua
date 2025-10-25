@@ -46,9 +46,6 @@ vim.keymap.set("n", "<Leader>c", ":set cursorcolumn!<CR>", opts)
 vim.keymap.set("n", "<C-Z>", ":Neotree toggle<CR>", opts)
 vim.keymap.set("n", "<leader>gg", "<cmd>Neotree toggle git_status<cr>", { desc = "Toggle Git Status (Neo-tree)" })
 
--- Floaterm toggle
-vim.keymap.set("n", "<leader>ft", ":FloatermNew<CR>", opts)
-vim.keymap.set("t", "<leader>ft", "<C-\\><C-n>:FloatermNew<CR>", opts)
 -- Go to tab by tab number
 vim.keymap.set("n", "<leader>1", "1gt", { noremap = true })
 vim.keymap.set("n", "<leader>2", "2gt", { noremap = true })
