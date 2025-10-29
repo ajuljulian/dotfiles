@@ -64,5 +64,8 @@ alias tmux='tmux -u'
 alias k='kubectl'
 alias lg='lazygit'
 
+# Auto-completion
+eval "$(uv generate-shell-completion zsh)"
+
 # Load local, machine-specific extras (ignored by git)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

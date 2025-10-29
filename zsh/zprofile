@@ -43,5 +43,6 @@ export PATH="$HOME/.local/bin:$PATH"
 [ -f ~/.zprofile.local ]  && source ~/.zprofile.local
 
 export AWS_DEFAULT_PROFILE=ara-personal
+
 # source a file containing environment specific entries if it exists
 eval "$(/opt/homebrew/bin/brew shellenv)"
