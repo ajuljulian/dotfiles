@@ -79,4 +79,4 @@ zstyle ':vcs_info:git:*' unstagedstr ' %F{yellow}●%f'
 zstyle ':vcs_info:git:*' formats ' %F{240}(%b%u%c)%f'
 zstyle ':vcs_info:git:*' actionformats ' %F{240}(%b|%a%u%c)%f'
 setopt PROMPT_SUBST
-PROMPT='%n@%m:%~${vcs_info_msg_0_}$ '
+PROMPT='%n@%m:%1~${vcs_info_msg_0_}$ '
