@@ -12,6 +12,6 @@
   },
   // Theme configuration
   "theme": "aura",
-  "model": "anthropic/claude-sonnet-4-20250514",
+  "model": "Kimi K2",
   "autoupdate": true
 }

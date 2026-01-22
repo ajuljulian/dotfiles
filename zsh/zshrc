@@ -64,5 +64,19 @@ alias tmux='tmux -u'
 alias k='kubectl'
 alias lg='lazygit'
 
+# Auto-completion
+eval "$(uv generate-shell-completion zsh)"
+
 # Load local, machine-specific extras (ignored by git)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Enhanced git prompt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr ' %F{green}●%f'
+zstyle ':vcs_info:git:*' unstagedstr ' %F{yellow}●%f'
+zstyle ':vcs_info:git:*' formats ' %F{240}(%b%u%c)%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{240}(%b|%a%u%c)%f'
+setopt PROMPT_SUBST
+PROMPT='%n@%m:%~${vcs_info_msg_0_}$ '
