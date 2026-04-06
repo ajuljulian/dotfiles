@@ -10,8 +10,6 @@
       "pwd": "allow"
     }
   },
-  // Theme configuration
-  "theme": "aura",
   "model": "Kimi K2",
   "autoupdate": true
 }

@@ -47,6 +47,34 @@ eval "$(jenv init -)"
 ###################################
 ####### Useful functions ##########
 ###################################
+
+
+git-delete-branch() {
+  if [ -z "$1" ]; then
+    echo "Usage: git-delete-branch <branch-name>"
+    return 1
+  fi
+  
+  local branch="$1"
+  
+  # Delete local branch if it exists
+  if git show-ref --verify --quiet "refs/heads/$branch"; then
+    git branch -D "$branch"
+    echo "Deleted local branch: $branch"
+  else
+    echo "Local branch '$branch' not found"
+  fi
+  
+  # Delete remote branch if it exists
+  if git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+    git push origin --delete "$branch"
+    echo "Deleted remote branch: $branch"
+  else
+    echo "Remote branch '$branch' not found on origin"
+  fi
+}
+
+
 function bb { open -a /Applications/BBEdit.app $*; }
 function aws-personal { aws --profile ara-personal $*; }
 function ai() {
@@ -63,6 +91,7 @@ alias zzz='source ~/.zshrc && source ~/.zprofile'
 alias tmux='tmux -u'
 alias k='kubectl'
 alias lg='lazygit'
+alias gbd='git-delete-branch'
 
 # Auto-completion
 eval "$(uv generate-shell-completion zsh)"
