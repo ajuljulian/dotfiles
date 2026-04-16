@@ -69,7 +69,7 @@ $ brew install --cask kitty
 Create a symlink:
 
 ```
-$ ln -s ~/Development/configs/kitty.conf ~/.conf/kitty/kitty.conf
+$ ln -s ~/Development/configs/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ```
 
 ## Ghostty (terminal emulator)
@@ -84,6 +84,27 @@ Create a symlink:
 ```
 $ ln -s ~/Development/configs/ghostty.conf ~/Library/Application Support/com.mitchellh.ghostty
 ```
+
+## Tmux
+
+https://github.com/tmux/tmux
+
+```
+$ brew install tmux
+```
+
+The tmux configuration includes theme switching between light and dark modes.
+
+Create a symlink:
+
+```
+$ ln -s ~/Development/configs/tmux/tmux.conf ~/.tmux.conf
+```
+
+The config also includes:
+- `tmux.dark.conf` - Dark theme configuration
+- `tmux.light.conf` - Light theme configuration
+- `toggle-tmux-theme.sh` - Script to toggle between themes
 
 ## Lazygit
 
@@ -136,6 +157,26 @@ Configure it:
 $ p10k configure
 ```
 
+## Opencode
+
+https://github.com/sst/opencode
+
+Configuration file: `opencode.jsonc`
+
+Create a symlink:
+
+```
+$ ln -s ~/Development/configs/opencode.jsonc ~/.opencode/config.jsonc
+```
+
+## VSCode Neovim
+
+For VSCode Neovim integration, settings are in:
+
+```
+nvim/vscode/settings.vim
+```
+
 ## Colorls
 
 https://github.com/athityakumar/colorls#uninstallatio
@@ -155,6 +196,21 @@ Install:
 ```
 $ brew install lsd
 ```
+
+Configuration file is at `lsd/config.yaml`. To use it:
+
+```
+$ mkdir -p ~/.config/lsd
+$ ln -s ~/Development/configs/lsd/config.yaml ~/.config/lsd/config.yaml
+```
+
+## Scripts
+
+Utility scripts located in the `scripts/` directory:
+
+- `find_colors.sh` - Script for finding terminal colors
+- `check_colors_24_bit.sh` - Script to check 24-bit color support
+- `jup_env.sh` - Jupyter environment setup script
 
 ## Tmuxinator
 
@@ -200,4 +256,23 @@ Edit project
 
 ```
 $ tmuxinator open {project}
+```
+
+### Available Projects
+
+The following project templates are available in `tmuxinator/`:
+
+- `arek-python.yml` - Python development environment
+- `complex.yml` - Complex multi-pane setup
+- `development.yml` - General development environment
+- `ignis.yml` - Ignis project setup
+- `k8s.yml` - Kubernetes development environment
+- `learn-react.yml` - React learning environment
+- `simplek8s.yml` - Simple Kubernetes setup
+
+To use these projects, copy them to your tmuxinator config directory:
+
+```
+$ mkdir -p ~/.config/tmuxinator
+$ ln -s ~/Development/configs/tmuxinator/{project}.yml ~/.config/tmuxinator/
 ```
