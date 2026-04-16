@@ -6,6 +6,8 @@ I use these dot files on all my machines. I try to aggregate as much of my them 
 
 https://neovim.io
 
+📄 **Detailed Neovim documentation**: See [nvim/README.md](nvim/README.md) for complete plugin list, keymaps, and configuration details.
+
 Let's say you cloned this repo to `~/Development/configs`.
 And let's say the neovim config file is under `~/.config/nvim`
 
