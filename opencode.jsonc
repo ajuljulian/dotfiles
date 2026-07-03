@@ -10,6 +10,16 @@
       "pwd": "allow"
     }
   },
+  "mcp": {
+      "excalidraw": {
+        "type": "remote",
+        "url": "https://api.excalidraw.com/api/v1/mcp",
+        "enabled": true,
+        "headers": {
+          "Authorization": "Bearer {env:EXCALIDRAW_API_KEY}"
+        }
+      }
+    },
   "model": "Kimi K2",
   "autoupdate": true
 }
