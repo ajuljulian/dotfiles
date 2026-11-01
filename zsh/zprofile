@@ -1,51 +1,64 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/arajuljulian/.docker/bin"
+# End of Docker Desktop section.
+
 #### For login shells ###
 
-# Set the default editor to Neovim
+# Default editor
 export EDITOR=nvim
-
 
 # Load personal secrets
 if [ -f "$HOME/.zprofile.secrets" ]; then
   source "$HOME/.zprofile.secrets"
 fi
 
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/bin
-export PATH=$PATH:/usr/local/bin
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+# Personal binaries should win over Homebrew
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
+# Ruby
+export PATH="$HOME/.gem/ruby/4.0.0/bin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
 # Rust
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH="$HOME/.cargo/bin:$PATH"
 
-# Java
+# Java / jenv
 export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="$HOME/.jenv/shims:$PATH"
 
-#export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-#export JAVA_HOME="/opt/homebrew/opt/openjdk"
-#export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-export PATH=$JAVA_HOME/bin:$PATH
+if [ -n "$JAVA_HOME" ]; then
+  export PATH="$JAVA_HOME/bin:$PATH"
+fi
 
 # Go
-export PATH="$PATH:$(go env GOPATH)/bin"
+if command -v go >/dev/null 2>&1; then
+  export PATH="$(go env GOPATH)/bin:$PATH"
+fi
 
 # Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
-export PATH=$PATH:'/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
+# SnowSQL
+export PATH="/Applications/SnowSQL.app/Contents/MacOS:$PATH"
 
-export PATH="$HOME/.local/bin:$PATH"
+# VS Code
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
-# source a file containing environment specific entries if it exists.
-[ -f ~/.zprofile.local ]  && source ~/.zprofile.local
+# Ghostty
+export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
+# Local environment overrides
+[ -f "$HOME/.zprofile.local" ] && source "$HOME/.zprofile.local"
+
+# AWS
 export AWS_DEFAULT_PROFILE=ara-personal
 
-# source a file containing environment specific entries if it exists
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Re-assert personal binaries last so ~/.local/bin/claude wins over Homebrew
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+

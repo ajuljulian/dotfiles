@@ -6,7 +6,11 @@ return {
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
+			local appearance = vim.fn.system("defaults read -g AppleInterfaceStyle 2>/dev/null")
+
+			local dark = vim.v.shell_error == 0 and appearance:match("Dark") ~= nil
+
+			vim.cmd.colorscheme(dark and "tokyonight-moon" or "tokyonight-day")
 		end,
 	},
 	{
